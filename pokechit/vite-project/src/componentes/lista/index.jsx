@@ -1,32 +1,15 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { motion } from 'framer-motion';
 import './style.css';
 import Filtro from '../filtro';
 import { useNavigate } from "react-router-dom";
+import { AppContext } from '../../contexto/contexto';
 
 function Lista() {
   const navigate = useNavigate();
   const [busqueda, setBusqueda] = useState('');
-  const [data, setData] = useState([]);
-  const [tipoSeleccionado, setTipoSeleccionado] = useState('All');
 
-  useEffect(() => {
-    const obtenerDatos = async () => {
-      if (tipoSeleccionado === 'All') {
-        const res = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=1025`);
-        const json = await res.json();
-        setData(json.results);
-      } else {
-        const res = await fetch(`https://pokeapi.co/api/v2/type/${tipoSeleccionado}`);
-        const json = await res.json();
-        const listaFiltrada = json.pokemon.map(p => p.pokemon);
-        setData(listaFiltrada);
-      }
-    };
-
-    obtenerDatos();
-  }, [tipoSeleccionado]);
-
+  const { data, setData, tipoSeleccionado, setTipoSeleccionado } = useContext(AppContext);
   const handleTipoChange = (tipo) => {
     setTipoSeleccionado(tipo);
   };
