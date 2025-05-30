@@ -12,6 +12,7 @@ import Usuarios from './componentes/usuarios';
 import Pokemon from './componentes/pokemon';
 import Login from './componentes/login';
 import Registro from './componentes/registro';
+import Administrador from './componentes/administrador';
 
 function App() {
   const [usuario, setUsuario] = useState(null);
@@ -48,6 +49,7 @@ function App() {
 
           <Route path="/login" element={<Login />} />
           <Route path="/registro" element={<Registro />} />
+          <Route path="/administrador" element={<Administrador/>} />
         </Routes>
       </Router>
     </AppProvider>
