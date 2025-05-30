@@ -40,7 +40,7 @@ function Login() {
         <button type="submit">Iniciar sesión</button>
       </form>
       <h2>No tiene cuenta</h2>
-      <button onClick={() => navigate("/register")}>Registrarse</button>
+      <button onClick={() => navigate('/registro')}>Registrarse</button>
     </div>
   );
 }
